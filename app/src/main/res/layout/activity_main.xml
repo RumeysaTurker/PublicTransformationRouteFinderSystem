@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/RotaBulRelative"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/background"
+        android:elevation="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <Button
+            android:id="@+id/btnMap"
+            android:layout_width="289dp"
+            android:layout_height="52dp"
+            android:layout_alignEnd="@+id/finishText"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="290dp"
+            android:drawableBottom="@drawable/places_ic_search"
+            app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
+
+        <EditText
+            android:id="@+id/finishText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="48dp"
+            android:background="?attr/colorBackgroundFloating"
+            android:ems="10"
+            android:hint="Finish Location"
+            android:inputType="textPersonName"
+            android:textColorHint="@android:color/black" />
+
+        <EditText
+            android:id="@+id/startText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="53dp"
+            android:layout_marginBottom="393dp"
+            android:background="?attr/colorBackgroundFloating"
+            android:ems="10"
+            android:hint="Start Location"
+            android:inputType="textPersonName"
+            android:textColorHint="@android:color/black" />
+
+        <Button
+            android:id="@+id/btnLines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="153dp"
+            android:layout_marginBottom="24dp"
+            android:text="LINES" />
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>
