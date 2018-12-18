@@ -34,7 +34,7 @@ ArrayAdapter<String> adapter;
         @Override
         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
            String value= dataSnapshot.getValue(String.class);
-            list.add( value);
+            list.add(value);
             adapter.notifyDataSetChanged();
         }
 
@@ -45,7 +45,9 @@ ArrayAdapter<String> adapter;
 
         @Override
         public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
+            String value= dataSnapshot.getValue(String.class);
+            list.remove(value);
+            adapter.notifyDataSetChanged();
         }
 
         @Override
