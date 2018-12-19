@@ -30,16 +30,16 @@
             android:src="@drawable/ic_magnify"/>
 
         <AutoCompleteTextView
+            android:id="@+id/input_search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/ic_magnify"
             android:layout_centerVertical="true"
-            android:textSize="15sp"
-            android:textColor="#000"
-            android:id="@+id/input_search"
+            android:layout_toRightOf="@+id/ic_magnify"
             android:background="@null"
-            android:hint="Enter Address, City or Zip Code"
-            android:imeOptions="actionSearch"/>
+            android:hint="Enter Address, City"
+            android:imeOptions="actionSearch"
+            android:textColor="#000"
+            android:textSize="15sp" />
 
 
     </RelativeLayout>
@@ -75,7 +75,14 @@
         android:id="@+id/place_info"
         android:src="@drawable/ic_info"/>
 
-
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="42dp"
+        android:text="Routes Information and Estimation Time" />
 
 
 </RelativeLayout>

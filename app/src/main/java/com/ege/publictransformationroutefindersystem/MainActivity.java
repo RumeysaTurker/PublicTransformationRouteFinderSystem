@@ -21,9 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private static final int ERROR_DIALOG_REQUEST = 9001;
-    private ListView listView;
 
-    private String[] settings = {"Şehir Seçimi","Bildirimler","Harita","Gizlilik"};
+
 
 
     @Override
@@ -34,14 +33,7 @@ public class MainActivity extends AppCompatActivity {
         if (isServicesOK()) {
             init();
         }
-     /*   listView = (ListView)findViewById(R.id.listViewSetting);
 
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, settings);
-
-
-        listView.setAdapter(adapter);*/
     }
 
     private void init() {
@@ -60,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent2 = new Intent(MainActivity.this, LinesActivity.class);
                 startActivity(intent2);
+            }
+        });
+        ImageButton locationBtn= (ImageButton) findViewById(R.id.locationBtn);
+        locationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "GPS finds your start location", Toast.LENGTH_SHORT).show();
+
             }
         });
 

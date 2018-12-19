@@ -4,19 +4,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.ege.publictransformationroutefindersystem.R;
-
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-
 import java.util.ArrayList;
 
 
@@ -67,14 +62,6 @@ Vehicles vehicle;
 
           }
 
-
-          //  listview = (ListView) findViewById(R.id.lwLines);
-          //  final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myArrayList);
-
-          //listview.setAdapter(arrayAdapter);
-
-          //Firebase ref = new Firebase("https://ptrfs-63c9b.firebaseio.com/Vehicles");
-          // DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("bus");
 
       });
     }
