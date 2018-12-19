@@ -4,11 +4,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.firebase.client.Firebase;
+import com.firebase.client.GenericTypeIndicator;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.database.ChildEventListener;
@@ -17,56 +20,72 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.core.Tag;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class LinesActivity extends AppCompatActivity {
-
-ListView listview;
-FirebaseListAdapter adapter;
-
-
+    private ListView listView;
+private TextView textView;
+private FirebaseDatabase database;
+private DatabaseReference myRef;
+private ArrayList<String> mVehicle=new ArrayList<>();
+Vehicles vehicle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lines);
+      database=FirebaseDatabase.getInstance();
+      myRef=database.getReference("Vehicles");
+        listView = (ListView) findViewById(R.id.lwLines);
+          final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mVehicle);
 
-    listview=(ListView)findViewById(R.id.lwLines);
- Query query=FirebaseDatabase.getInstance().getReference().child("Vehicles");
-        FirebaseListOptions<Vehicles> options= new FirebaseListOptions.Builder<Vehicles>()
-                .setLayout(R.layout.vehicles)
-                .setLifecycleOwner(LinesActivity.this)
-                .setQuery(query,Vehicles.class)
-                .build();
+        listView.setAdapter(arrayAdapter);
+      myRef.addChildEventListener(new ChildEventListener() {
+          @Override
+          public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+              String value=dataSnapshot.getValue(String.class);
+              mVehicle.add(value);
+              arrayAdapter.notifyDataSetChanged();
+          }
 
-   adapter=new FirebaseListAdapter(options) {
-       @Override
-       protected void populateView(@NonNull View v, @NonNull Object model, int position) {
-          TextView vehicleID=v.findViewById(R.id.vehicleID);
-           TextView vehicleRoute=v.findViewById(R.id.vehicleRoute);
-           TextView routeEstimationTime=v.findViewById(R.id.routeEstimationTime);
-           TextView vehicleType=v.findViewById(R.id.vehicleType);
-           Vehicles vehicle=(Vehicles) model;
-           vehicleID.setText("ID:"+vehicle.getVehicleID().toString());
-           vehicleType.setText("TYPE:"+vehicle.getVehicleType().toString());
-           vehicleRoute.setText("ROUTE:"+vehicle.getVehicleRoute().toString());
-           routeEstimationTime.setText("TIME:"+vehicle.getRouteEstimationTime().toString());
-       }
-   };
-   listview.setAdapter(adapter);
-}
+          @Override
+          public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
+          }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        adapter.stopListening();
+          @Override
+          public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+              String value=dataSnapshot.getValue(String.class);
+              mVehicle.remove(value);
+              arrayAdapter.notifyDataSetChanged();
+          }
+
+          @Override
+          public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+          }
+
+          @Override
+          public void onCancelled(@NonNull DatabaseError databaseError) {
+
+          }
+
+
+          //  listview = (ListView) findViewById(R.id.lwLines);
+          //  final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myArrayList);
+
+          //listview.setAdapter(arrayAdapter);
+
+          //Firebase ref = new Firebase("https://ptrfs-63c9b.firebaseio.com/Vehicles");
+          // DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("bus");
+
+      });
     }
 }

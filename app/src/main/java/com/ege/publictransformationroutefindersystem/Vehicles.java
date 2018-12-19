@@ -1,6 +1,8 @@
 package com.ege.publictransformationroutefindersystem;
 
-public class Vehicles {
+import java.io.Serializable;
+
+public class Vehicles   {
     private String vehicleID;
     private String vehicleRoute;
     private String vehicleType;
