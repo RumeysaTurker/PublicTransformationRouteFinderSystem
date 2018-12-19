@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Button btnLines = (Button) findViewById(R.id.btnLines);
-        btnMap.setOnClickListener(new View.OnClickListener() {
+        btnLines.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent2 = new Intent(MainActivity.this, LinesActivity.class);

@@ -7,59 +7,66 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 public class LinesActivity extends AppCompatActivity {
-    DatabaseReference dref;
+
 ListView listview;
-ArrayList<String> list=new ArrayList<>();
-ArrayAdapter<String> adapter;
+FirebaseListAdapter adapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lines);
 
     listview=(ListView)findViewById(R.id.lwLines);
-    adapter=new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,list);
-    listview.setAdapter(adapter);
-        dref=FirebaseDatabase.getInstance().getReference();
-    dref.addChildEventListener(new ChildEventListener() {
-        @Override
-        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-           String value= dataSnapshot.getValue(String.class);
-            list.add(value);
-            adapter.notifyDataSetChanged();
-        }
+ Query query=FirebaseDatabase.getInstance().getReference().child("Vehicles");
+        FirebaseListOptions<Vehicles> options= new FirebaseListOptions.Builder<Vehicles>()
+                .setLayout(R.layout.vehicles)
+                .setLifecycleOwner(LinesActivity.this)
+                .setQuery(query,Vehicles.class)
+                .build();
 
-        @Override
-        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+   adapter=new FirebaseListAdapter(options) {
+       @Override
+       protected void populateView(@NonNull View v, @NonNull Object model, int position) {
+          TextView vehicleID=v.findViewById(R.id.vehicleID);
+           TextView vehicleRoute=v.findViewById(R.id.vehicleRoute);
+           TextView routeEstimationTime=v.findViewById(R.id.routeEstimationTime);
+           TextView vehicleType=v.findViewById(R.id.vehicleType);
+           Vehicles vehicle=(Vehicles) model;
+           vehicleID.setText("ID:"+vehicle.getVehicleID().toString());
+           vehicleType.setText("TYPE:"+vehicle.getVehicleType().toString());
+           vehicleRoute.setText("ROUTE:"+vehicle.getVehicleRoute().toString());
+           routeEstimationTime.setText("TIME:"+vehicle.getRouteEstimationTime().toString());
+       }
+   };
+   listview.setAdapter(adapter);
+}
 
-        }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
 
-        @Override
-        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-            String value= dataSnapshot.getValue(String.class);
-            list.remove(value);
-            adapter.notifyDataSetChanged();
-        }
-
-        @Override
-        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        }
-    });
-
-
-}}
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+}
