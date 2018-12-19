@@ -4,9 +4,11 @@ buildscript {
 
     repositories {
         maven { url 'https://plugins.gradle.org/m2/'}
-        jcenter()
         google()
+        jcenter()
+
     }
+
     dependencies {
         //firebase
         classpath 'com.google.gms:google-services:4.2.0'
@@ -18,10 +20,12 @@ buildscript {
     }
 }
 
+
 allprojects {
     repositories {
 
         jcenter()
+        google()
         maven {
             url "https://maven.google.com"
         }

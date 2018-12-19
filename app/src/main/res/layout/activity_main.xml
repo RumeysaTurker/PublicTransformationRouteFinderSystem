@@ -19,64 +19,109 @@
         app:layout_constraintEnd_toEndOf="parent">
 
 
+        <RelativeLayout
+            android:id="@+id/btnLayout"
+            android:layout_width="380dp"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/common_google_signin_btn_text_light_default">
+
+            <ImageButton
+                android:id="@+id/btnLines"
+                android:layout_width="54dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="215dp"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/whitebus" />
+
+            <ImageButton
+                android:id="@+id/locationBtn"
+                android:layout_width="54dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/placeholder" />
+
+            <ImageButton
+                android:id="@+id/settingBtn"
+                android:layout_width="54dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="302dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/settings" />
+
+            <ImageButton
+                android:id="@+id/btnFavorites"
+                android:layout_width="54dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="123dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/starbutton" />
+        </RelativeLayout>
+
         <Button
             android:id="@+id/btnMap"
             android:layout_width="289dp"
             android:layout_height="52dp"
+            android:layout_below="@+id/finishText"
             android:layout_alignEnd="@+id/finishText"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="45dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="290dp"
-            android:drawableBottom="@drawable/places_ic_search"
-            app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="42dp"
+            android:layout_marginEnd="-5dp"
+            android:layout_marginBottom="224dp"
+            android:drawableBottom="@drawable/ic_magnify"
+            app:srcCompat="@android:drawable/ic_menu_search" />
 
         <EditText
             android:id="@+id/finishText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="270dp"
+            android:layout_height="35dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="88dp"
-            android:layout_marginEnd="48dp"
-            android:background="?attr/colorBackgroundFloating"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="158dp"
+            android:layout_marginEnd="59dp"
+            android:background="@color/common_google_signin_btn_text_light_focused"
             android:ems="10"
             android:hint="Finish Location"
             android:inputType="textPersonName"
-            android:textColorHint="@android:color/black" />
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_default" />
 
         <EditText
             android:id="@+id/startText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="270dp"
+            android:layout_height="35dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="53dp"
-            android:layout_marginBottom="393dp"
-            android:background="?attr/colorBackgroundFloating"
+            android:layout_marginStart="55dp"
+            android:layout_marginEnd="59dp"
+            android:layout_marginBottom="396dp"
+            android:background="@color/common_google_signin_btn_text_light_focused"
             android:ems="10"
             android:hint="Start Location"
             android:inputType="textPersonName"
-            android:textColorHint="@android:color/black" />
-
-        <Button
-            android:id="@+id/btnLines"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="153dp"
-            android:layout_marginBottom="24dp"
-            android:text="LINES" />
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textColorHighlight="@color/common_google_signin_btn_text_dark_default"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="18sp" />
 
     </RelativeLayout>
+
 
 
 </android.support.constraint.ConstraintLayout>

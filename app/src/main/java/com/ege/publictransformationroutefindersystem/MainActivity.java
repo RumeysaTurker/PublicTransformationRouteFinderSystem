@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -18,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private static final int ERROR_DIALOG_REQUEST = 9001;
+    private ListView listView;
+
+    private String[] settings = {"Şehir Seçimi","Bildirimler","Harita","Gizlilik"};
 
 
     @Override
@@ -28,6 +34,14 @@ public class MainActivity extends AppCompatActivity {
         if (isServicesOK()) {
             init();
         }
+     /*   listView = (ListView)findViewById(R.id.listViewSetting);
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, settings);
+
+
+        listView.setAdapter(adapter);*/
     }
 
     private void init() {
@@ -39,12 +53,31 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Button btnLines = (Button) findViewById(R.id.btnLines);
+
+        ImageButton btnLines= (ImageButton) findViewById(R.id.btnLines);
         btnLines.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent2 = new Intent(MainActivity.this, LinesActivity.class);
                 startActivity(intent2);
+            }
+        });
+
+        ImageButton btnFavorites= (ImageButton) findViewById(R.id.btnFavorites);
+        btnFavorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3 = new Intent(MainActivity.this, FavoriteActivity.class);
+                startActivity(intent3);
+            }
+        });
+
+        ImageButton settingBtn= (ImageButton) findViewById(R.id.settingBtn);
+        settingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent4 = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent4);
             }
         });
     }
