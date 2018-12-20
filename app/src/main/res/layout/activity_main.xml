@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:visibility="visible"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -48,14 +49,16 @@
 
             <ImageButton
                 android:id="@+id/settingBtn"
-                android:layout_width="54dp"
-                android:layout_height="50dp"
-                android:layout_alignParentStart="true"
+                android:layout_width="59dp"
+                android:layout_height="52dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="302dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="32dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="19dp"
+                android:layout_marginBottom="11dp"
+                android:layout_toEndOf="@+id/btnLines"
                 android:background="@drawable/settings" />
 
             <ImageButton
@@ -67,12 +70,13 @@
                 android:layout_marginStart="123dp"
                 android:layout_marginTop="0dp"
                 android:background="@drawable/starbutton" />
+
         </RelativeLayout>
 
         <Button
             android:id="@+id/btnMap"
             android:layout_width="289dp"
-            android:layout_height="47dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/finishText"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
@@ -82,7 +86,7 @@
             android:layout_marginLeft="55dp"
             android:layout_marginTop="42dp"
             android:layout_marginEnd="59dp"
-            android:layout_marginBottom="285dp"
+            android:layout_marginBottom="235dp"
             android:drawableBottom="@drawable/ic_magnify"
             app:srcCompat="@android:drawable/ic_menu_search" />
 
@@ -94,7 +98,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="55dp"
-            android:layout_marginTop="158dp"
+            android:layout_marginTop="212dp"
             android:layout_marginEnd="59dp"
             android:background="@color/common_google_signin_btn_text_light_focused"
             android:ems="10"
@@ -112,7 +116,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="55dp"
             android:layout_marginEnd="59dp"
-            android:layout_marginBottom="420dp"
+            android:layout_marginBottom="370dp"
             android:background="@color/common_google_signin_btn_text_light_focused"
             android:ems="10"
             android:hint="Start Location"
@@ -121,6 +125,18 @@
             android:textColorHighlight="@color/common_google_signin_btn_text_dark_default"
             android:textColorHint="@color/common_google_signin_btn_text_dark_default"
             android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="159dp"
+            android:layout_height="113dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="225dp"
+            app:srcCompat="@drawable/letsgo" />
 
     </RelativeLayout>
 
