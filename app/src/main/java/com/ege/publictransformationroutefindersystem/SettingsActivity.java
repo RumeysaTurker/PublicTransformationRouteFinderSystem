@@ -40,6 +40,13 @@ public class SettingsActivity extends AppCompatActivity {
                 Toast.makeText(SettingsActivity.this, "Privacy Settings", Toast.LENGTH_SHORT).show();
             }
         });
+        EditText help= (EditText) findViewById(R.id.help);
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SettingsActivity.this, "HELP", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }
